@@ -29,42 +29,70 @@ namespace pr2._1
 
         private void SolveEquation_Click(object sender, RoutedEventArgs e)
         {
-            string[] odds = EquationTXT.Text.Split(' ',',',';');
-            double discriminant;
+            string[] odds = OddsTXT.Text.Split(' ', ',', ';');
 
-            double minusSecondOdd = double.Parse(odds[1]) * -1;
-
-            if(discriminant > 0)
+            try
             {
-                firstRoot = (minusSecondOdd + Math.Sqrt(discriminant)) / 2 * double.Parse(odds[0]);
-                secondRoot = (minusSecondOdd - Math.Sqrt(discriminant)) / 2 * double.Parse(odds[0]);
+                if (!odds[0].Contains("1"))
+                {
+                    if (odds[1].Contains("-"))
+                    {
+                        EquationTXT.Text = odds[0] + "x^2 " + odds[1] + "x" + " + " + odds[2] + " = 0";
+                    }
+                }
+                else
+                {
+                    if (odds[1].Contains("-"))
+                    {
+                        EquationTXT.Text = "x^2 " + odds[1] + "x" + " + " + odds[2] + " = 0";
+                    }
+                }
 
-                MessageBox.Show(firstRoot.ToString() + '\n' + secondRoot.ToString());
-            }
-            else if(discriminant == 0) 
-            {
-                firstRoot = (minusSecondOdd + Math.Sqrt(discriminant)) / 2 * double.Parse(odds[0]);
-                MessageBox.Show(firstRoot.ToString() + '\n' + secondRoot.ToString());
-            }
-            else
-            {
-                MessageBox.Show("Корней нет");
-            }
+                double firstOdd = double.Parse(odds[0]);
+                double secondOdd = double.Parse(odds[1]);
+                double thirdOdd = double.Parse(odds[2]);
 
+                double minusSecondOdd = secondOdd * -1;
+
+                double discriminant = Math.Pow(secondOdd, 2) - 4 * firstOdd * thirdOdd;
+
+                if (discriminant > 0)
+                {
+                    firstRoot = (minusSecondOdd + Math.Sqrt(discriminant)) / 2 * double.Parse(odds[0]);
+                    secondRoot = (minusSecondOdd - Math.Sqrt(discriminant)) / 2 * double.Parse(odds[0]);
+
+                    MessageBox.Show("Первый корень: " + firstRoot.ToString() + '\n' + "Второй корень: " + secondRoot.ToString());
+                }
+                else if (discriminant == 0)
+                {
+                    firstRoot = (minusSecondOdd + Math.Sqrt(discriminant)) / 2 * double.Parse(odds[0]);
+                    MessageBox.Show("Корень: " + firstRoot.ToString());
+                }
+                else
+                {
+                    MessageBox.Show("Корней нет");
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Проверьте правильность введенных данных", "Внимание", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
         }
 
         private void ClearFieldBTN_Click(object sender, RoutedEventArgs e)
         {
             EquationTXT.Text = string.Empty;
+            OddsTXT.Text = string.Empty;
+
         }
 
         private void EquationTXT_GotFocus(object sender, RoutedEventArgs e)
         {
-            EquationTXT.Text = string.Empty;
-            EquationTXT.Foreground = Brushes.Black;
-            EquationTXT.FontStyle = FontStyles.Normal;
-            EquationTXT.FontWeight = FontWeights.Thin;
+            OddsTXT.Text = string.Empty;
+            OddsTXT.Foreground = Brushes.Black;
+            OddsTXT.FontStyle = FontStyles.Normal;
+            OddsTXT.FontWeight = FontWeights.Thin;
 
         }
     }

@@ -86,12 +86,12 @@
         <GroupBox 
             Grid.Row="1"
             Style="{StaticResource GroupBoxStyle}"
-            Header="Уравнение" 
+            Header="Коэффициенты" 
             Grid.ColumnSpan="2">
 
 
             <TextBox 
-                x:Name="EquationTXT"
+                x:Name="OddsTXT"
                 Style="{StaticResource TextBoxStyle}"
                 Margin="10,0,125,0" 
                 Text="Введите коэффициенты уравнения" 
@@ -103,12 +103,12 @@
         </GroupBox>
 
         <GroupBox 
-            Header="Коэффициенты"
+            Header="Уравнение"
             Style="{StaticResource GroupBoxStyle}"
             Grid.Row="2" 
             Grid.Column="0">
             <TextBlock 
-                x:Name="OddsTXT"
+                x:Name="EquationTXT"
                 Background="AliceBlue"
                 Margin="5,10"/>
         </GroupBox>
