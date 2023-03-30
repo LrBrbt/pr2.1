@@ -25,7 +25,7 @@ namespace pr2._1
             InitializeComponent();
         }
         double firstRoot = 0;
-        double secondRoot= 0;
+        double secondRoot = 0;
 
         private void SolveEquation_Click(object sender, RoutedEventArgs e)
         {
@@ -35,17 +35,11 @@ namespace pr2._1
             {
                 if (!odds[0].Contains("1"))
                 {
-                    if (odds[1].Contains("-"))
-                    {
-                        EquationTXT.Text = odds[0] + "x^2 " + odds[1] + "x" + " + " + odds[2] + " = 0";
-                    }
+                    EquationTXT.Text = odds[0] + "x^2 + " + odds[1] + "x" + " + " + odds[2] + " = 0";
                 }
                 else
                 {
-                    if (odds[1].Contains("-"))
-                    {
-                        EquationTXT.Text = "x^2 " + odds[1] + "x" + " + " + odds[2] + " = 0";
-                    }
+                    EquationTXT.Text = "x^2 + " + odds[1] + "x" + " + " + odds[2] + " = 0";
                 }
 
                 double firstOdd = double.Parse(odds[0]);
